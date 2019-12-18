@@ -1,6 +1,6 @@
 # Some useful Git Commands
 
-## Changing the origin of Git repository
+### Changing the origin of Git repository
 ``` sh
 git remote rm origin
 git remote add origin git@github.com:aplikacjainfo/proj1.git
