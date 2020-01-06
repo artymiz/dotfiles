@@ -7,26 +7,8 @@ ZSH=$HOME/.oh-my-zsh
 export VISUAL=nvim
 export EDITOR=$VISUAL
 
-# Set name of the theme to load.
-ZSH_THEME="powerlevel9k/powerlevel9k"
-
-# Command auto-correction.
-ENABLE_CORRECTION="true"
- 
-# Command execution time stamp shown in the history command output.
-HIST_STAMPS="mm/dd/yyyy"
- 
-
-# plugins to load
-plugins=(git
-       	bundler
-	sdk
-	vundle
-	zsh-syntax-highlighting
-	zsh-autosuggestions
-	zsh-completions)
-
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit
+fpath=(path/to/zsh-completions/src $fpath)
 
 # =========== Powerlevel Config ============
 # 
@@ -56,12 +38,13 @@ POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='clear'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='006'
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='clear'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='006'
-POWERLEVEL9K_DIR_SHORTEN_LENGTH=2
-POWERLEVEL9K_DIR_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_DIR_ETC_BACKGROUND='clear'
 POWERLEVEL9K_ETC_ICON=$'%F{012}\uf013'
 POWERLEVEL9K_HOME_ICON=$'%F{012}\ue617'
 POWERLEVEL9K_HOME_SUB_ICON=$'%F{012}\uf07c'
+POWERLEVEL9K_FOLDER_ICON=$'%F{012}\uf115'
 
 # VCS icons
 POWERLEVEL9K_VCS_GIT_ICON=$'\uf1d2 '
@@ -105,7 +88,10 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='012'
 
 # ----------- Powerlevel Config ------------
 
-source ~/.oh-my-zsh/oh-my-zsh.sh
+source  ~/powerlevel9k/powerlevel9k.zsh-theme
+source ~/zsh-sdkman/zsh-sdkman.plugin.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 alias vi='nvim'
 alias ls='lsd'
@@ -113,4 +99,5 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
+alias py='python3'
 
