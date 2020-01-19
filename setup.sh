@@ -11,3 +11,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugges
 # jupyter install with ipython-sql support
 pip3 install --upgrade pip
 pip3 install jupyter
+pip3 install ipython-sql
