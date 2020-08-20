@@ -3,7 +3,6 @@
 #  #   / // __| '_ \| '__/ __|
 #  #  / /_\__ \ | | | | | (__
 #  # /____|___/_| |_|_|  \___|
-ZSH=$HOME/.oh-my-zsh
 export VISUAL=nvim
 export EDITOR=$VISUAL
 
@@ -26,7 +25,7 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=$''
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=$' \uf101 '
  
 # Separators
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0b0'
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$''
 POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'%F{007}\uf054'
 POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$''
 POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=$'%F{007}\uf053'
@@ -98,5 +97,14 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
-alias py='python3'
+alias py='python3.7'
 alias pip='pip3'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/art/.sdkman"
+export SDKMAN_DIR="/home/art/.sdkman"
+[[ -s "/home/art/.sdkman/bin/sdkman-init.sh" ]] && source "/home/art/.sdkman/bin/sdkman-init.sh"
+export PATH=apache-maven-3.6.3/bin:$PATH
+
+PATH=$PATH:/usr/bin:/opt
+
