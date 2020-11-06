@@ -19,3 +19,5 @@ source ~/.zshrc
 sudo apt install python3-pip
 pip3 install --user notebook
 pip3 install --user ipython-sql
+
+cp ./.zshrc ~
