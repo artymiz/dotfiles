@@ -1,12 +1,13 @@
 #!/bin/sh
 sudo apt update
 sudo apt install git
-sudo apt install build-essential
 sudo apt install zsh
 chsh -s $(which zsh)
 sudo apt-get install neovim
-sudo apt-get install python3-neovim
 
+# c/c++
+sudo apt install build-essential
+sudo apt install cmake
 
 #zsh plugins
 git clone https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
