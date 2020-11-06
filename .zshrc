@@ -92,7 +92,7 @@ source  ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-alias vi='nvim'
+alias v='nvim'
 alias ls='lsd'
 alias ll='ls -l'
 alias la='ls -a'
