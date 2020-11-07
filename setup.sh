@@ -6,8 +6,8 @@ chsh -s $(which zsh)
 sudo apt-get install neovim
 
 # c/c++
-sudo apt install build-essential
-sudo apt install cmake
+sudo apt install build-essential cmake
+sudo apt-get install libncurses5-dev libncursesw5-dev
 
 #zsh plugins
 git clone https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
