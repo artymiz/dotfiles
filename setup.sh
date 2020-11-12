@@ -7,6 +7,7 @@ sudo apt-get install curl file git
 
 # install homebrew
 if ! command -v brew &> /dev/null
+then
     bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
     test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -24,12 +25,12 @@ mkdir ~/.config/nvim
 cp ./nvim/init.vim ~/.config/nvim
 
 # llvm binary
-cd ~
-wget https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/clang+llvm-11.0.0-x86_64-linux-gnu-ubuntu-20.04.tar.xz
-tar -xvf clang+llvm-11.0.0-x86_64-linux-gnu-ubuntu-20.04.tar.xz
-mv clang+llvm-11.0.0-x86_64-linux-gnu-ubuntu-20.04 clang+llvm-11.0.0
-rm clang+llvm-11.0.0-x86_64-linux-gnu-ubuntu-20.04.tar.xz
-cd cwd
+# cd ~
+# wget https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/clang+llvm-11.0.0-x86_64-linux-gnu-ubuntu-20.04.tar.xz
+# tar -xvf clang+llvm-11.0.0-x86_64-linux-gnu-ubuntu-20.04.tar.xz
+# mv clang+llvm-11.0.0-x86_64-linux-gnu-ubuntu-20.04 clang+llvm-11.0.0
+# rm clang+llvm-11.0.0-x86_64-linux-gnu-ubuntu-20.04.tar.xz
+# cd cwd
 
 #boost library
 cd ~
@@ -37,6 +38,7 @@ wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.bz2
 tar -xvjf boost_1_74_0.tar.bz2
 cd boost_1_74_0
 sudo ./bootstrap.sh --prefix=/usr --with-python=python3 && sudo ./b2 stage -j<N> threading=multi link=shared
+sudo ./b2 headers
 sudo ./b2 install threading=multi link=shared
 cd cwd
 
@@ -55,7 +57,7 @@ sudo dpkg -i lsd_0.18.0_amd64.deb
 rm lsd_0.18.0_amd64.deb
 
 # copy zshrc
-cp ./.zshrc ~
+cp .zshrc ~
 source ~/.zshrc
 
 # jupyter install with ipython-sql support

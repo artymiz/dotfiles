@@ -102,11 +102,12 @@ alias py='python3.7'
 alias pip='pip3'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/art/.sdkman"
-export SDKMAN_DIR="/home/art/.sdkman"
-[[ -s "/home/art/.sdkman/bin/sdkman-init.sh" ]] && source "/home/art/.sdkman/bin/sdkman-init.sh"
-export PATH=apache-maven-3.6.3/bin:$PATH
+export SDKMAN_DIR="/home/arty/.sdkman"
+[[ -s "/home/arty/.sdkman/bin/sdkman-init.sh" ]] && source "/home/arty/.sdkman/bin/sdkman-init.sh"
+export PATH="/home/arty/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 
 PATH=$PATH:/usr/bin:/opt
-PATH=$PATH:~/clang+llvm-11.0.0
 
