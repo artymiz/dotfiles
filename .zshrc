@@ -108,4 +108,5 @@ export SDKMAN_DIR="/home/art/.sdkman"
 export PATH=apache-maven-3.6.3/bin:$PATH
 
 PATH=$PATH:/usr/bin:/opt
+PATH=$PATH:~/clang+llvm-11.0.0
 
