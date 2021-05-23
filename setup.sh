@@ -5,24 +5,10 @@ sudo apt install build-essential cmake g++ autotools-dev libicu-dev libbz2-dev l
 sudo apt-get install libncurses5-dev libncursesw5-dev
 sudo apt-get install curl file git
 
-# install homebrew
-if ! command -v brew &> /dev/null
-then
-    bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    test -r ~/.bash_profile && echo eval" ($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-fi
-
-# neovim stuff (nightly)
-brew install --HEAD neovim
-# vim plug
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-# config file
-mkdir ~/.config/nvim
-cp ./nvim/init.vim ~/.config/nvim
+# install neovim Nightly via appimage
+sudo apt remove neovim -y
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
 
 # llvm binary
 # cd ~
