@@ -7,13 +7,10 @@ sudo apt-get install curl file git
 
 # install neovim Nightly via appimage
 sudo apt remove neovim -y
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 ./nvim.appimage --appimage-extract
-./squashfs-root/AppRun --version
-
 # Optional: exposing nvim globally
-mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim
+sudo mv squashfs-root / && sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 # llvm binary
 # cd ~
