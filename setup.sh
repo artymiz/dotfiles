@@ -24,14 +24,14 @@ mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim
 # cd cwd
 
 #boost library
-cd ~
-wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.bz2
-tar -xvjf boost_1_74_0.tar.bz2
-cd boost_1_74_0
-sudo ./bootstrap.sh --prefix=/usr --with-python=python3 && sudo ./b2 stage -j<N> threading=multi link=shared
-sudo ./b2 headers
-sudo ./b2 install threading=multi link=shared
-cd cwd
+# cd ~
+# wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.bz2
+# tar -xvjf boost_1_74_0.tar.bz2
+# cd boost_1_74_0
+# sudo ./bootstrap.sh --prefix=/usr --with-python=python3 && sudo ./b2 stage -j<N> threading=multi link=shared
+# sudo ./b2 headers
+# sudo ./b2 install threading=multi link=shared
+# cd cwd
 
 #zsh
 sudo apt install zsh
@@ -52,8 +52,8 @@ cp .zshrc ~
 source ~/.zshrc
 
 # jupyter install with ipython-sql support
-sudo apt install python3-pip
-pip3 install --user notebook
-pip3 install --user ipython-sql
-sudo apt install python3-neovim
+# sudo apt install python3-pip
+# pip3 install --user notebook
+# pip3 install --user ipython-sql
+# sudo apt install python3-neovim
 
