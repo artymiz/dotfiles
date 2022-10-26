@@ -92,13 +92,17 @@ source  ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# if neovim is installed from source with installation home bound to ~/neovim/bin
+# this line may need to be uncommented
+# export PATH="$HOME/neovim/bin:$PATH"
 alias v='nvim'
+
 alias ls='lsd'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
-alias py='python3.7'
+alias py='python3'
 alias pip='pip3'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -108,6 +112,4 @@ export PATH="/home/arty/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-
 PATH=$PATH:/usr/bin:/opt
-

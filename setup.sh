@@ -1,19 +1,33 @@
 #!/bin/sh
 cwd=$(pwd)
 sudo apt update
-sudo apt install build-essential cmake g++ autotools-dev libicu-dev libbz2-dev libboost-all-dev
-sudo apt-get install libncurses5-dev libncursesw5-dev
+sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 sudo apt-get install curl file git
 
 # install neovim Nightly via appimage
-sudo apt remove neovim -y
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-./nvim.appimage --appimage-extract
-./squashfs-root/AppRun --version
+# sudo apt remove neovim -y
+# curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+# chmod u+x nvim.appimage
+# ./nvim.appimage --appimage-extract
+# # Optional: exposing nvim globally
+# sudo mv squashfs-root / && sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
-# Optional: exposing nvim globally
-mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim
+if ! snap_cmd="$(type -p "snap")" || [[ -z $snap_cmd]];
+then
+# build neovim from source
+  cd ~
+  git clone git@github.com:neovim/neovim.git
+  cd neovim
+  make CMAKE_BUILD_TYPE=Release
+  rm -r build/  # clear the CMake cache
+  make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+  make install
+  export PATH="$HOME/neovim/bin:$PATH"
+  cd $cwd;
+else
+  sudo snap install --edge nvim --classic
+fi
+
 
 # llvm binary
 # cd ~
