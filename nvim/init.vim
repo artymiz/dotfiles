@@ -8,10 +8,10 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'tpope/vim-fugitive'
 
 Plug 'ryanoasis/vim-devicons'
-Plug 'neovim/nvim-lspconfig',
+Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'jackguo380/vim-lsp-cxx-highlight',
-Plug 'm-pilia/vim-ccls',
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -70,6 +70,10 @@ nnoremap <leader>- :vertical resize -5<CR>
 " ========================
 " Language Server Protocol
 " ========================
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "clangd", "pyright", "bashls" }
+})
 
 "completion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -78,14 +82,20 @@ set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " ccls
+
 lua <<EOF
-require'nvim_lsp'.ccls.setup{
-    init_options = {
-        highlight = { lsRanges = true; }
-    },
-    on_attach=require'completion'.on_attach
-}    
+
+local servers = {
+  "clangd", "pyright", "bashls"
+}
+
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp.setup {
+    on_attach = require'completion'.on_attach
+}
+
 EOF
+
 
 nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>

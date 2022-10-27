@@ -2,23 +2,32 @@
 cwd=$(pwd)
 sudo apt update -y
 # install C++ tool chain
-sudo apt-get install -y ninja-build gettext libssl-dev libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+sudo apt-get install -y ninja-build gettext libssl-dev libtool libtool-bin autoconf automake cmake g++ pkg-config unzip clangd-11
+
+sudo apt-get install -y python3-pip
+
 # install version control and file retrieval tools
 sudo apt-get install -y curl file git wget ssh
 
 # install xclip if not using wsl
-if ! grep -qi microsoft /proc/version; then
+# if ! grep -qi microsoft /proc/version; then
     sudo apt-get install -y xclip
-fi
+# fi
 
 
 # install neovim Nightly via appimage
 sudo apt remove neovim -y
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-chmod u+x nvim.appimage
-./nvim.appimage --appimage-extract
-# Optional: exposing nvim globally
-sudo mv squashfs-root / && sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+# curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+# chmod u+x nvim.appimage
+# ./nvim.appimage --appimage-extract
+# # Optional: exposing nvim globally
+# sudo mv squashfs-root / && sudo ln -s /squashfs-root/usr/bin/nvim /usr/bin/nvim
+
+# install neovim Nightly with tarball
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+sudo tar -xzvf nvim-linux64.tar.gz -C /opt
+# create symbolic link to usr bin
+sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
 
 # llvm binary
 # cd ~
@@ -39,7 +48,7 @@ sudo mv squashfs-root / && sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 # cd cwd
 
 #zsh
-sudo apt install zsh
+sudo apt install zsh -y
 chsh -s $(which zsh)
 
 #zsh plugins
@@ -57,12 +66,13 @@ cp .zshrc ~
 source ~/.zshrc
 
 # install vim-plug for nvim
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+pip3 install --user neovim
 
 # setup init.vim
 mkdir ~/.config/nvim
-cp cwd/nvim/init.vim ~/.config/nvim
+cp nvim/init.vim ~/.config/nvim
 v ~/.config/nvim/init.vim
 
 # jupyter install with ipython-sql support
@@ -75,9 +85,9 @@ v ~/.config/nvim/init.vim
 ssh-keygen -t ed25519
 
 # copy the ssh-key to clipboard
-if grep -qi microsoft /proc/version; then
-    cat ~/.ssh/id_ed25519.pub | clip
-else
+# if grep -qi microsoft /proc/version; then
+#     cat ~/.ssh/id_ed25519.pub | clip
+# else
     xclip -sel clip < ~/.ssh/id_ed25519.pub
-fi
+# fi
 
