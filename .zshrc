@@ -10,20 +10,20 @@ autoload -Uz compinit && compinit
 fpath=(path/to/zsh-completions/src $fpath)
 
 # =========== Powerlevel Config ============
-# 
+#
 # Font mode for powerlevel9k
 POWERLEVEL9K_MODE=nerdfont-complete
- 
+
 # Prompt elements
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir dir_writable_joined vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status)
- 
+
 # Prompt settings
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=$''
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=$' \uf101 '
- 
+
 # Separators
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$''
 POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'%F{007}\uf054'
@@ -111,5 +111,8 @@ alias pip='pip3'
 # export PATH="/home/arty/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
+
+# local display for GUI APP and xclip on xServers
+export DISPLAY=localhost:0
 
 PATH=$PATH:/usr/bin:/opt
