@@ -1,29 +1,22 @@
 #!/bin/sh
 cwd=$(pwd)
-sudo apt update -y
+sudo pacman -Syu
 # install C++ tool chain
-sudo apt-get install -y ninja-build gettext libssl-dev libtool libtool-bin
+sudo pacman -S ninja-build gettext libssl-dev libtool libtool-bin
 autoconf automake cmake g++ pkg-config unzip clangd-12
 
-sudo apt-get install -y python3-pip
+sudo pacman -S python3-pip
 
-# install version control and file retrieval tools
-sudo apt-get install -y curl file git wget ssh
+# install file retrieval tools
+sudo pacman -S curl wget ssh
+sudo pacman -S xclip
 
-# install xclip if not using wsl
-# if ! grep -qi microsoft /proc/version; then
-    sudo apt-get install -y xclip
-# fi
+# For logitech custom button mappings
+pacman -S logiops
 
-
-# install neovim Nightly with tarball
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
-sudo tar -xzvf nvim-linux64.tar.gz -C /opt
-# create symbolic link to usr bin
-sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
 
 #zsh
-sudo apt install zsh -y
+sudo pacman -S zsh -y
 chsh -s $(which zsh)
 
 #zsh plugins
@@ -40,12 +33,17 @@ rm lsd_0.23.1_amd64.deb
 cp .zshrc ~
 source ~/.zshrc
 
-# install packer for neovim
+# install nerd font and set it
+pacman -S ttf-firacode-nerd
+setfont ttf-firacode-nerd
+
+# install neovim and packer
+sudo pacman -S neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # ripgrep to use plugin features
-sudo apt-get install ripgrep
+sudo pacman -S ripgrep
 
 # setup nvim config
 git clone git@github.com:ThePrimeagen/init.lua.git ~/.config/nvim
