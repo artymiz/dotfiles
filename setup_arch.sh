@@ -2,7 +2,8 @@
 cwd=$(pwd)
 sudo pacman -Syu
 # install C++ tool chain
-sudo pacman -S ninja-build gettext libssl-dev libtool libtool-bin autoconf automake cmake g++ pkg-config unzip clangd-12
+sudo pacman -S ninja-build gettext libssl-dev libtool libtool-bin autoconf automake cmake\
+g++ pkg-config unzip clangd-12
 
 sudo pacman -S python3-pip
 
@@ -13,16 +14,27 @@ sudo pacman -S xclip
 # For logitech custom button mappings
 sudo pacman -S logiops
 
-# get yay and setup awesome wm theme
+# get yay
 cd /opt
 sudo git clone https://aur.archlinux.org/yay-git.git
 sudo chown -R art:art ./yay-git
 cd yay-git
 makepkg -si
-sudo yay -Syu
-yay -S awesome rofi picom i3lock-fancy xclip ttf-roboto polkit-gnome materia-theme lxappearance flameshot pnmixer network-manager-applet xfce4-power-manager qt5-styleplugins papirus-icon-theme -y
+
+# and setup awesome wm theme
+yay -Syu
+yay -S awesome rofi picom i3lock-fancy xclip ttf-roboto polkit-gnome materia-theme lxappearance\
+flameshot pnmixer network-manager-applet xfce4-power-manager qt5-styleplugins\
+capitaine-cursors papirus-icon-theme qt5-styleplugins -y
 git clone git@github.com:ChrisTitusTech/titus-awesome.git ~/.config/awesome
 # follow the rest of the setup on https://github.com/ChrisTitusTech/titus-awesome
+# set rofi theme
+mkdir -p ~/.config/rofi
+cp $HOME/.config/awesome/theme/config.rasi ~/.config/rofi/config.rasi
+sed -i '/@import/c\@import "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.config/rofi/config.rasi
+#set application theme and fix missing indicators
+sudo bash -c "echo -e 'XDG_CURRENT_DESKTOP=Unity\nQT_QPA_PLATFORMTHEME=gtk2' >> /etc/environment"
+
 
 #zsh
 sudo pacman -S zsh -y
