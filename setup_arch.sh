@@ -35,6 +35,7 @@ sed -i '/@import/c\@import "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.conf
 #set application theme and fix missing indicators
 sudo bash -c "echo -e 'XDG_CURRENT_DESKTOP=Unity\nQT_QPA_PLATFORMTHEME=gtk2' >> /etc/environment"
 
+yay -S brave-bin
 
 #zsh
 sudo pacman -S zsh -y
