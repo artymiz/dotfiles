@@ -11,7 +11,7 @@ sudo pacman -S curl wget ssh
 sudo pacman -S xclip
 
 # For logitech custom button mappings
-pacman -S logiops
+sudo pacman -S logiops
 
 # get yay and setup awesome wm theme
 cd /opt
@@ -34,15 +34,14 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-sy
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # install lsd for ls with nerd font icons
-pacman -S lsd
+sudo pacman -S lsd
 
 # copy zshrc
 cp .zshrc ~
 source ~/.zshrc
 
 # install nerd font and set it
-pacman -S ttf-firacode-nerd
-setfont ttf-firacode-nerd
+sudo pacman -S ttf-firacode-nerd
 
 # install neovim and packer
 sudo pacman -S neovim
