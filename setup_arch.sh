@@ -11,9 +11,6 @@ sudo pacman -S python3-pip
 sudo pacman -S curl wget ssh
 sudo pacman -S xclip
 
-# Various misc apps
-sudo pacman -S logiops discord
-
 # get yay
 cd /opt
 sudo git clone https://aur.archlinux.org/yay-git.git
@@ -35,7 +32,10 @@ sed -i '/@import/c\@import "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.conf
 #set application theme and fix missing indicators
 sudo bash -c "echo -e 'XDG_CURRENT_DESKTOP=Unity\nQT_QPA_PLATFORMTHEME=gtk2' >> /etc/environment"
 
-yay -S brave-bin
+
+# Various misc apps
+sudo pacman -S discord
+yay -S brave-bin logiops
 
 #zsh
 sudo pacman -S zsh -y
