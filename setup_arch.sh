@@ -34,9 +34,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-sy
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # install lsd for ls with nerd font icons
-wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb
-sudo dpkg -i lsd_0.23.1_amd64.deb
-rm lsd_0.23.1_amd64.deb
+pacman -S lsd
 
 # copy zshrc
 cp .zshrc ~
