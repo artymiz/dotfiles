@@ -2,8 +2,7 @@
 cwd=$(pwd)
 sudo pacman -Syu
 # install C++ tool chain
-sudo pacman -S ninja-build gettext libssl-dev libtool libtool-bin
-autoconf automake cmake g++ pkg-config unzip clangd-12
+sudo pacman -S ninja-build gettext libssl-dev libtool libtool-bin autoconf automake cmake g++ pkg-config unzip clangd-12
 
 sudo pacman -S python3-pip
 
@@ -14,6 +13,16 @@ sudo pacman -S xclip
 # For logitech custom button mappings
 pacman -S logiops
 
+# get yay and setup awesome wm theme
+cd /opt
+sudo git clone https://aur.archlinux.org/yay-git.git
+sudo chown -R art:art ./yay-git
+cd yay-git
+makepkg -si
+sudo yay -Syu
+yay -S awesome rofi picom i3lock-fancy xclip ttf-roboto polkit-gnome materia-theme lxappearance flameshot pnmixer network-manager-applet xfce4-power-manager qt5-styleplugins papirus-icon-theme -y
+git clone git@github.com:ChrisTitusTech/titus-awesome.git ~/.config/awesome
+# follow the rest of the setup on https://github.com/ChrisTitusTech/titus-awesome
 
 #zsh
 sudo pacman -S zsh -y
