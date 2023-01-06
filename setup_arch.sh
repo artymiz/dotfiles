@@ -11,8 +11,8 @@ sudo pacman -S python3-pip
 sudo pacman -S curl wget ssh
 sudo pacman -S xclip
 
-# For logitech custom button mappings
-sudo pacman -S logiops
+# Various misc apps
+sudo pacman -S logiops discord
 
 # get yay
 cd /opt
