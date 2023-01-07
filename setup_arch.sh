@@ -18,6 +18,12 @@ sudo chown -R art:art ./yay-git
 cd yay-git
 makepkg -si
 
+# swap primary monitor and dual monitor positions
+# comment out if not needed
+cp /etc/X11/xinit/xinitrc ~/.xinitrc
+echo "xrandr --output DVI-D-0 --mode 1680x1050 --pos 1920x15 --rotate normal --output HDMI-0 --off\
+--output DP-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off" >> ~/.xinitrc
+
 # and setup awesome wm theme
 yay -Syu
 yay -S awesome rofi picom i3lock-fancy xclip ttf-roboto polkit-gnome materia-theme lxappearance\
@@ -33,8 +39,8 @@ sed -i '/@import/c\@import "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.conf
 sudo bash -c "echo -e 'XDG_CURRENT_DESKTOP=Unity\nQT_QPA_PLATFORMTHEME=gtk2' >> /etc/environment"
 
 
-# Various misc apps
-sudo pacman -S discord
+# Various misc apps, chinese&japanese&korean language support
+sudo pacman -S discord noto-fonts-cjk
 yay -S brave-bin logiops
 
 #zsh
