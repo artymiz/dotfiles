@@ -113,6 +113,6 @@ alias pip='pip3'
 # eval "$(pyenv virtualenv-init -)"
 
 # local display for GUI APP and xclip on xServers
-export DISPLAY=localhost:0
+# export DISPLAY=localhost:0
 
 PATH=$PATH:/usr/bin:/opt
