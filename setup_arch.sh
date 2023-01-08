@@ -40,7 +40,7 @@ sudo bash -c "echo -e 'XDG_CURRENT_DESKTOP=Unity\nQT_QPA_PLATFORMTHEME=gtk2' >> 
 
 
 # Various misc apps, chinese&japanese&korean language support
-sudo pacman -S discord noto-fonts-cjk
+sudo pacman -S discord noto-fonts-cjk ibus ibus-libpinyin ibus-anthy
 yay -S brave-bin logiops
 
 #zsh
