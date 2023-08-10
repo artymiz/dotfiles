@@ -7,7 +7,7 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 
 autoload -Uz compinit && compinit
-fpath=(path/to/zsh-completions/src $fpath)
+fpath=(.zsh/zsh-completions/src $fpath)
 
 # =========== Powerlevel Config ============
 #
