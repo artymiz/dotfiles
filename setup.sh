@@ -22,6 +22,9 @@ sudo tar -xzvf nvim-linux64.tar.gz -C /opt
 # create symbolic link to usr bin
 sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
 
+#install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 #zsh
 sudo apt install zsh -y
 chsh -s $(which zsh)
