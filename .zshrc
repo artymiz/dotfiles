@@ -114,5 +114,5 @@ alias pip='pip3'
 
 # local display for GUI APP and xclip on xServers
 # export DISPLAY=localhost:0
-
-PATH=$PATH:/usr/bin:/opt
+# PATH=$PATH:/usr/bin:/opt
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
