@@ -7,7 +7,7 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 
 autoload -Uz compinit && compinit
-fpath=(path/to/zsh-completions/src $fpath)
+fpath=(.zsh/zsh-completions/src $fpath)
 
 # =========== Powerlevel Config ============
 #
@@ -115,6 +115,7 @@ alias npm='/usr/bin/npm'
 # eval "$(pyenv virtualenv-init -)"
 
 # local display for GUI APP and xclip on xServers
+<<<<<<< HEAD
 export DISPLAY="grep nameserver /etc/resolv.conf | sed 's/nameserver//":0
 
 PATH=$PATH:/usr/bin:/opt
@@ -140,3 +141,8 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 conda activate opencv
+=======
+# export DISPLAY=localhost:0
+# PATH=$PATH:/usr/bin:/opt
+source "$HOME/.cargo/env"
+>>>>>>> a67657d5040239b94524a81ce7438540f1c1a83d

@@ -2,7 +2,8 @@
 cwd=$(pwd)
 sudo apt update -y
 # install C++ tool chain
-sudo apt-get install -y ninja-build gettext libssl-dev libtool libtool-bin autoconf automake cmake g++ pkg-config unzip clangd-11
+sudo apt-get install -y ninja-build gettext libssl-dev libtool libtool-bin
+autoconf automake cmake g++ pkg-config unzip clangd-12
 
 sudo apt-get install -y python3-pip
 
@@ -15,14 +16,14 @@ sudo apt-get install -y curl file git wget ssh
 # fi
 
 
-# install neovim Nightly via appimage
-sudo apt remove neovim -y
-
 # install neovim Nightly with tarball
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
 sudo tar -xzvf nvim-linux64.tar.gz -C /opt
 # create symbolic link to usr bin
 sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
+
+#install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 #zsh
 sudo apt install zsh -y
@@ -32,6 +33,7 @@ chsh -s $(which zsh)
 git clone https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions.git
 
 # install lsd for ls with nerd font icons
 wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb
