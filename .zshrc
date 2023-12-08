@@ -15,7 +15,8 @@ fpath=(path/to/zsh-completions/src $fpath)
 POWERLEVEL9K_MODE=nerdfont-complete
 
 # Prompt elements
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir dir_writable_joined vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator dir dir_writable_joined vcs
+    pyenv anaconda goenv nodenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status)
 
 # Prompt settings
@@ -104,6 +105,7 @@ alias lla='ls -la'
 alias lt='ls --tree'
 alias py='python3'
 alias pip='pip3'
+alias npm='/usr/bin/npm'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="/home/arty/.sdkman"
@@ -113,6 +115,28 @@ alias pip='pip3'
 # eval "$(pyenv virtualenv-init -)"
 
 # local display for GUI APP and xclip on xServers
-export DISPLAY=localhost:0
+export DISPLAY="grep nameserver /etc/resolv.conf | sed 's/nameserver//":0
 
 PATH=$PATH:/usr/bin:/opt
+export PATH="$HOME/.local/bin:$PATH"
+source "$HOME/.cargo/env"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/arty/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/arty/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/arty/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/arty/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+conda activate opencv
