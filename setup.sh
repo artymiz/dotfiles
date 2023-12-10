@@ -35,6 +35,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-sy
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
 
+#install nerd fonts
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf
+
+
 # install lsd for ls with nerd font icons
 wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb
 sudo dpkg -i lsd_0.23.1_amd64.deb
