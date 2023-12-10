@@ -33,7 +33,7 @@ chsh -s $(which zsh)
 git clone https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions.git
+git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
 
 # install lsd for ls with nerd font icons
 wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb
