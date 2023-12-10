@@ -115,17 +115,11 @@ alias npm='/usr/bin/npm'
 # eval "$(pyenv virtualenv-init -)"
 
 # local display for GUI APP and xclip on xServers
-<<<<<<< HEAD
 export DISPLAY="grep nameserver /etc/resolv.conf | sed 's/nameserver//":0
-
-PATH=$PATH:/usr/bin:/opt
-export PATH="$HOME/.local/bin:$PATH"
-source "$HOME/.cargo/env"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/arty/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -138,11 +132,9 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
-
 conda activate opencv
-=======
+
 # export DISPLAY=localhost:0
 # PATH=$PATH:/usr/bin:/opt
 source "$HOME/.cargo/env"
->>>>>>> a67657d5040239b94524a81ce7438540f1c1a83d
+
