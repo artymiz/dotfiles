@@ -92,6 +92,7 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='012'
 source  ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath=(~/.zsh/zsh-completions/src $fpath)
 
 # if neovim is installed from source with installation home bound to ~/neovim/bin
 # this line may need to be uncommented
@@ -107,21 +108,9 @@ alias py='python3'
 alias pip='pip3'
 alias npm='/usr/bin/npm'
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-# export SDKMAN_DIR="/home/arty/.sdkman"
-# [[ -s "/home/arty/.sdkman/bin/sdkman-init.sh" ]] && source "/home/arty/.sdkman/bin/sdkman-init.sh"
-# export PATH="/home/arty/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-
-# local display for GUI APP and xclip on xServers
-export DISPLAY="grep nameserver /etc/resolv.conf | sed 's/nameserver//":0
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
+# >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/arty/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/arty/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -132,9 +121,7 @@ else
     fi
 fi
 unset __conda_setup
-conda activate opencv
+# <<< conda initialize <<<
 
-# export DISPLAY=localhost:0
-# PATH=$PATH:/usr/bin:/opt
-source "$HOME/.cargo/env"
-
+. "$HOME/.cargo/env"
+export PATH=$HOME/.local/bin:$PATH
