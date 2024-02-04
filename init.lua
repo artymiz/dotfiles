@@ -73,6 +73,18 @@ require('lazy').setup({
     },
   },
 
+  -- completion for code embedded in other documents
+  {
+    "jmbuhr/otter.nvim",
+    on_attach = function()
+      local languages = { "python", "r", "sql", "javascript", "typescript", "html" }
+      local completion = true
+      local diagnostics = true
+      local tsquery = nil
+      require('otter').activate(languages, completion, diagnostics, tsquery)
+    end,
+  },
+
   {
     -- Github Copilot
     'github/copilot.vim'
@@ -161,7 +173,7 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require('onedark').setup({
-        style='deep'
+        style='darker'
       })
       vim.cmd.colorscheme 'onedark'
     end,
@@ -221,13 +233,25 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+    on_attach = function ()
+      vim.treesitter.language.register('html', { 'ejs' })
+    end
   },
 
+  -- for RStudio-like environment
   {
     'jalvesaq/Nvim-R',
     'jalvesaq/colorout',
     'jalvesaq/zotcite',
   },
+  
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -402,14 +426,15 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'r', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'css' },
+    ensure_installed = { 'c', 'cpp', 'r', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'css', 'html', 'markdown', 'markdown_inline' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = true,
+    auto_install = false,
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
     -- List of parsers to ignore installing
     ignore_install = {},
+
     -- You can specify additional Treesitter modules here: -- For example: -- playground = {--enable = true,-- },
     modules = {},
     highlight = { enable = true },
@@ -423,6 +448,7 @@ vim.defer_fn(function()
         node_decremental = '<M-space>',
       },
     },
+    autotag = { enable = true },
     textobjects = {
       select = {
         enable = true,
@@ -470,7 +496,10 @@ vim.defer_fn(function()
       ]]
     },
   }
+  -- vim.treesitter.language.register('html', { 'ejs' })
+  -- vim.treesitter.language.register('javascript', { 'ejs' }),
 end, 0)
+
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
@@ -554,7 +583,7 @@ local servers = {
   pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'ejs' } },
   cssls = { filetypes = { 'css', 'scss', 'less', 'sass' } },
   r_language_server = { filetypes = { 'r', 'rmd' } },
 
@@ -645,9 +674,10 @@ cmp.setup {
 
   sources = {
     { name = 'path' },
-    { name = 'nvim_lsp', keyword_length = 1 },
-    { name = 'buffer', keyword_length = 3 },
-    { name = 'luasnip', keyword_length = 2 },
+    { name = 'nvim_lsp' },
+    { name = 'otter' },
+    { name = 'buffer' },
+    { name = 'luasnip' },
   },
 }
 
