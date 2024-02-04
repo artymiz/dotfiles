@@ -89,10 +89,10 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='012'
 
 # ----------- Powerlevel Config ------------
 
-source  ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-fpath=(~/.zsh/zsh-completions/src $fpath)
+source  ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath=(~/.config/zsh/zsh-completions/src $fpath)
 
 # if neovim is installed from source with installation home bound to ~/neovim/bin
 # this line may need to be uncommented
